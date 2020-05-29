@@ -12,7 +12,7 @@ services:
         build:
           context: ./
         ports:
-          - 80:80
+          - 90:80
         links:
           - codeigniter4_mysql
         volumes:
@@ -24,10 +24,10 @@ services:
 #--------------------------------------------------------------------------#
 #--------------------------------------------------------------------------#               
     codeigniter4_mysql:
-        image: mysql:8.0.20
+        image: mysql:8.0
         container_name: 'codeigniter4_mysql'
         ports:
-          - 3306:3306
+          - 91:3306
         volumes:
           - ./localfolder/mysql:/var/lib/mysql
           - ./localfolder/logs/mysql:/var/log/mysql
@@ -51,6 +51,6 @@ services:
           PMA_HOST: codeigniter4_mysql
           PMA_PORT: 3306
         ports:
-          - 81:80
+          - 92:80
         volumes:
           - ./localfolder/sessions:/sessions
