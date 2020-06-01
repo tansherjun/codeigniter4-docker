@@ -39,7 +39,9 @@ RUN mv codeigniter4 /
 
 RUN apt-get clean \
     && rm -r /var/lib/apt/lists/*
-    
+
+RUN printf 'memory_limit = ${PHP_MEMORY_LIMIT}' >> /usr/local/etc/php/conf.d/environment.ini;
+
 EXPOSE 80
 VOLUME ["/var/www/html", "/var/log/apache2", "/etc/apache2"]
 
