@@ -3,6 +3,9 @@ FROM php:7.3-apache
 LABEL original_author="Antonio Sanna <atsanna@tiscali.it>"
 LABEL maintainer="Sher Jun Tan <tansherjun@gmail.com>"
 
+
+
+
 RUN apt-get update
 RUN apt-get upgrade -y
 
@@ -19,7 +22,13 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 RUN composer self-update
 
-ADD conf/apache.conf /etc/apache2/sites-available/000-default.conf
+#Commenting out as the ENV APACHE_DOCUMENT_ROOT is probably a better way of doing this
+#ADD conf/apache.conf /etc/apache2/sites-available/000-default.conf
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html/codeigniter4/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
 
 RUN a2enmod rewrite
 
