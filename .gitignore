@@ -1,6 +1,9 @@
 # Don't include localfolder or projectfolder as this will be specific to your use
-localfolder
-projectfolder
+localfolder/logs
+localfolder/mysql
+localfolder/sessions
+localfolder/www/codeigniter4
 
 #Anything else that should not be committed to git is to be placed in this folder
 not4git
+

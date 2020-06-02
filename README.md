@@ -52,6 +52,8 @@ docker-compose up -d
 docker-compose down --volumes
 ```
 
+5. (Optional) To get the completed tutorial version, copy contents of www\codeigniter4_completed_tutorial into www\codeigniter4
+
 ## Contributing
 
 Contributions are welcome!
